@@ -1,0 +1,6 @@
+{
+  "name": "Agnimitra's Exam Survival Adventure",
+  "description": "A cute, encouraging, and colorful arcade survival game built for Agnimitra to beat exam stress with positive vibes, power-ups, and special surprises.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
