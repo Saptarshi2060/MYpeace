@@ -610,35 +610,30 @@ Saptarshi ❤️`;
       let message = "You're doing amazing!";
       let size = 26;
 
-      if (colRand < 0.45) {
+      if (colRand < 0.35) {
         type = 'star';
         message = Math.random() > 0.5 ? "Confidence restored!" : "Keep going bb!";
         size = 24;
-      } else if (colRand < 0.72) {
+      } else if (colRand < 0.55) {
         type = 'book';
         message = "知識 Knowledge Gained!";
         size = 22;
-      } else if (colRand < 0.88) {
+      } else if (colRand < 0.70) {
         type = 'coffee';
         message = "Stamina Restored! ⚡";
         size = 22;
-      } else if (colRand < 0.94) {
+      } else if (colRand < 0.85) {
         type = 'heart';
         message = "Gained Protection Shield! ❤️";
         size = 24;
-      } else if (colRand < 0.97) {
+      } else {
         type = 'support';
         message = "Best Friend active!";
         size = 32;
-      } else {
-        // Secret Teddy Bear easter eggs
-        type = 'teddy';
-        message = "Secret Teddy Found! 🧸";
-        size = 26;
       }
 
       // Constrain collectibles count in level
-      if (collectiblesRef.current.length < 5) {
+      if (collectiblesRef.current.length < 6) {
         collectiblesRef.current.push({
           id: Math.random().toString(),
           x: 40 + Math.random() * (GAME_WIDTH - 80),
@@ -651,6 +646,21 @@ Saptarshi ❤️`;
           message,
         });
       }
+    }
+
+    // Guaranteed Teddy Bear spawning every 5 seconds (300 frames at 60 FPS)
+    if (tick % 300 === 0) {
+      collectiblesRef.current.push({
+        id: Math.random().toString(),
+        x: 40 + Math.random() * (GAME_WIDTH - 80),
+        y: 95 + Math.random() * (GAME_HEIGHT - 160),
+        type: 'teddy',
+        width: 26,
+        height: 26,
+        pulseSpeed: 0.07,
+        pulseTimer: 0,
+        message: "Secret Teddy Found! 🧸",
+      });
     }
 
     // --- MOVING AND RENDERING COLLECTIBLES ---
@@ -923,7 +933,19 @@ Saptarshi ❤️`;
       isDazed: false,
     };
 
-    collectiblesRef.current = [];
+    collectiblesRef.current = [
+      {
+        id: 'initial-teddy-1',
+        x: 100 + Math.random() * (GAME_WIDTH - 200),
+        y: 120 + Math.random() * (GAME_HEIGHT - 240),
+        type: 'teddy',
+        width: 26,
+        height: 26,
+        pulseSpeed: 0.07,
+        pulseTimer: 0,
+        message: "Secret Teddy Found! 🧸",
+      }
+    ];
     enemiesRef.current = [];
     particlesRef.current = [];
     popupMessagesRef.current = [];
