@@ -653,6 +653,23 @@ Saptarshi ❤️`;
       }
     }
 
+    // Guaranteed Teddy Bear spawning every 5 seconds (300 frames)
+    if (tick % 300 === 0) {
+      if (collectiblesRef.current.length < 5) {
+        collectiblesRef.current.push({
+          id: Math.random().toString(),
+          x: 40 + Math.random() * (GAME_WIDTH - 80),
+          y: 95 + Math.random() * (GAME_HEIGHT - 160),
+          type: 'teddy',
+          width: 26,
+          height: 26,
+          pulseSpeed: 0.07,
+          pulseTimer: 0,
+          message: "Secret Teddy Found! 🧸",
+        });
+      }
+    }
+
     // --- MOVING AND RENDERING COLLECTIBLES ---
     const activeCollectibles: Collectible[] = [];
     collectiblesRef.current.forEach((collect) => {
