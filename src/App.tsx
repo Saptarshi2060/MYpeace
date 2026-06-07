@@ -604,7 +604,7 @@ Saptarshi ❤️`;
 
     // --- SPAWNING COLLECTIBLES ---
     // Spawn normal stars, books, coffees randomly
-    if (tick % 30 === 0) {
+    if (tick % 75 === 0) {
       const colRand = Math.random();
       let type: 'star' | 'book' | 'coffee' | 'heart' | 'support' | 'teddy' = 'star';
       let message = "You're doing amazing!";
@@ -626,7 +626,7 @@ Saptarshi ❤️`;
         type = 'heart';
         message = "Gained Protection Shield! ❤️";
         size = 24;
-      } else if (colRand < 0.80) {
+      } else if (colRand < 0.97) {
         type = 'support';
         message = "Best Friend active!";
         size = 32;
